@@ -16,15 +16,15 @@ public class GarageController {
     public List<Car> getCars(){
     return garageService.getCars();
     }
-    @RequestMapping("/car/{id}")
-    public Car getCar(@PathVariable int id){
+    @RequestMapping(method = RequestMethod.GET,value = "/car/{id}")
+    public Car getCar(@PathVariable Long id){
      return garageService.getCar(id);
  }
- @RequestMapping(method = RequestMethod.DELETE,value = "/cars/{id}")
- public void deletecar(@PathVariable int id){
+ @RequestMapping(method = RequestMethod.DELETE,value = "/deletecar/{id}")
+ public void deletecar(@PathVariable Long id){
      garageService.deleteCar(id);
  }
- @RequestMapping(method = RequestMethod.POST,value = "/cars")
+ @RequestMapping(method = RequestMethod.POST,value = "/addcar")
  public void addcar(@RequestBody Car car){
      garageService.addCar(car);
  }

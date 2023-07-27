@@ -2,8 +2,11 @@ package com.example.garageapp.model;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.awt.*;
 @Entity
 public class Car {
@@ -14,25 +17,28 @@ public class Car {
         YELLOW
     }
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String mode;
     private String brand;
     private int year;
     private Color color;
 
-    public Car(int id,String mode, String brand, int year, Color color) {
-        this.id=id;
+    public Car() {
+    }
+
+    public Car(String mode, String brand, int year, Color color) {
         this.mode = mode;
         this.brand = brand;
         this.year = year;
         this.color = color;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
